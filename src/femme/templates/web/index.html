@@ -3,7 +3,7 @@
 	<head>
         {% load static %}
 		<meta charset="utf-8" />
-		<title>Femme | Caption</title>
+		<title>{{ title }} | {{ caption }}</title>
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 		<link rel="stylesheet" href="{%  static 'css/style.css' %}" type="text/css" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
@@ -39,46 +39,28 @@
 				</section><!--(#top > .wrapper > #spotlight)-->
 			</section><!--(#top > .wrapper)-->
 		</section><!--(#top)-->
-		<section id="about">
+
+        <section id="about">
 			<section class="wrapper">
 				<ul>
-					<li>
-						<div class="top">
-							<div class="img">
-								<img src="{% static 'images/about.png' %}" alt="" title="">
-							</div>
-						</div>
-						<div class="bottom">
-							<h3>About Femme</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur necessitatibus voluptatum fuga possimus eligendi eum quidem optio aliquam esse sapiente facilis totam in cumque vitae molestiae dolorum quaerat, laboriosam, et!</p>
-						</div>
-					</li>
-					<li>
-						<div class="top">
-							<div class="img">
-								<img src="{% static 'images/about.png' %}" alt="" title="">
-							</div>
-						</div>
-						<div class="bottom">
-							<h3>Our Vision</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur necessitatibus voluptatum fuga possimus eligendi eum quidem optio aliquam esse sapiente facilis totam in cumque vitae molestiae dolorum quaerat, laboriosam, et!</p>
-						</div>
-					</li>
-					<li>
-						<div class="top">
-							<div class="img">
-								<img src="{% static 'images/about.png' %}" alt="" title="">
-							</div>
-						</div>
-						<div class="bottom">
-							<h3>Our Mission</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur necessitatibus voluptatum fuga possimus eligendi eum quidem optio aliquam esse sapiente facilis totam in cumque vitae molestiae dolorum quaerat, laboriosam, et!</p>
-						</div>
-					</li>
+					{% for about in about_instances %}
+                        <li>
+                            <div class="top">
+                                <div class="img">
+                                    <img src="{{ about.image.url }}" alt="" title="">
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <h3>{{ about.title }}</h3>
+                                <p>{{ about.content }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
 				</ul>
 				<br class="clear">
 			</section>
 		</section>
+
 		<section id="issues">
 			<section class="wrapper">
 				<div class="head">

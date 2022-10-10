@@ -18,3 +18,17 @@ class RegistrationClass(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class AboutClass(models.Model):
+    title = models.CharField(max_length=128)
+    content = models.TextField()
+    image = models.ImageField(upload_to="web/about/")
+
+    class Meta:
+        db_table = 'web_about'
+        verbose_name = _('about')
+        verbose_name_plural = _('abouts')
+
+    def __unicode__(self):
+        return self.title
