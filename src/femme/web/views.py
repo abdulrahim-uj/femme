@@ -20,8 +20,7 @@ def index(request):
 
     about_instances = AboutClass.objects.all()
     context = {
-        "title": "Femme",
-        "caption": "Femme Caption",
+        "app_title": "Home",
         "about_instances": about_instances,
     }
     return render(request, 'web/index.html', context);
