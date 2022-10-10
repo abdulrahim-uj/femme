@@ -42,22 +42,26 @@
 
         <section id="about">
 			<section class="wrapper">
-				<ul>
-					{% for about in about_instances %}
-                        <li>
-                            <div class="top">
-                                <div class="img">
-                                    <img src="{{ about.image.url }}" alt="" title="">
+				{% if about_instances %}
+                    <ul>
+                        {% for about in about_instances %}
+                            <li>
+                                <div class="top">
+                                    <div class="img">
+                                        <img src="{{ about.image.url }}" alt="" title="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="bottom">
-                                <h3>{{ about.title }}</h3>
-                                <p>{{ about.content }}</p>
-                            </div>
-                        </li>
-                    {% endfor %}
-				</ul>
-				<br class="clear">
+                                <div class="bottom">
+                                    <h3>{{ about.title }}</h3>
+                                    <p>{{ about.content }}</p>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <br class="clear">
+                {% else %}
+                    <p>No data found!</p>
+                {% endif %}
 			</section>
 		</section>
 
@@ -699,7 +703,7 @@
 		
 		<footer>
 			<section class="wrapper">
-				<p>Powered By Femme. <span>&copy;</span> 2017 Femme. All rights reserved.</p>
+				<p>Powered By Femme. <span>&copy;</span> {% now 'Y' %} Femme. All rights reserved.</p>
 			</section><!--(#footer > .bottom)-->
 		</footer>
 		<script>
