@@ -15,6 +15,8 @@ from web.models import AboutClass, RegistrationClass
 from django.http.response import HttpResponse
 from web.forms import RegistrationForm
 from web.functions import generate_form_errors
+import json
+from django.urls import reverse
 
 
 def index(request):
@@ -50,9 +52,19 @@ def registration(request):
         _form = RegistrationForm(request.POST)
         if _form.is_valid():
             _form.save()
+            response_data = {
+                'status': "true",
+                'title': "Successfully submitted",
+                'message': "message successfully submitted",
+            }
         else:
-            errors = generate_form_errors(_form, formset=False)
-            return HttpResponse(errors)
-        return HttpResponse("form submitted")
+            message = generate_form_errors(_form, formset=False)
+            response_data = {
+                'status': "false",
+                'stable': "true",
+                'title': "Form validation error",
+                'message': message,
+            }
+        return HttpResponse(json.dumps(response_data), content_type='application/javascript')
     else:
         return HttpResponse("invalid request!")

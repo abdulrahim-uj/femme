@@ -6,11 +6,15 @@
 		<title>{{ app_title }} | {{ app_caption }}</title>
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
 		<link rel="stylesheet" href="{%  static 'css/style.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{%  static 'css/ajax-django.css' %}" type="text/css" />
+        <link rel="stylesheet" href="{%  static 'css/sweet-alert.css' %}" type="text/css" />
 		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/ajax-django.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/sweet-alert.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
 	</head>
 	<body>
@@ -642,7 +646,7 @@
 					<h3>Join</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam asperiores tenetur aliquid sit repellat, dolores eius quasi possimus ipsum explicabo cumque. Explicabo exercitationem dignissimos asperiores unde et est, expedita numquam?</p>
 				</div>
-				<form action="{% url 'web:registration' %}" method="post">
+				<form class="ajax reload" action="{% url 'web:registration' %}" method="post">
                     {% csrf_token %}
 {#		complete with django			{{ form.as_p }}#}
                     <p class="first">
