@@ -118,6 +118,7 @@
 				<span class="line two">&nbsp;</span>
 			</section>
 		</section>
+
 		<section id="whyfemme">
 			<section class="wrapper">
 				<div class="head white">
@@ -172,9 +173,9 @@
 					</div>
 					<br class="clear">
 				</div>
-			</section>		
-			
+			</section>
 		</section>
+
 		<section id="features">
 			<section class="wrapper">
 				<div class="head">
@@ -239,7 +240,8 @@
 				</div>
 				<br class="clear">
 			</section>
-		</section>		
+		</section>
+
 		<section id="departments">
 			<section class="wrapper">
 				<div class="head white">
@@ -574,6 +576,7 @@
 				</ul>
 			</section>
 		</section>
+
 		<section id="part-of-femme">
 			<section class="wrapper">
 				<div class="head">
@@ -632,42 +635,45 @@
 				<br class="clear">
 			</section>
 		</section>
+
 		<section id="join">
 			<section class="wrapper">
 				<div class="head white">
 					<h3>Join</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam asperiores tenetur aliquid sit repellat, dolores eius quasi possimus ipsum explicabo cumque. Explicabo exercitationem dignissimos asperiores unde et est, expedita numquam?</p>
 				</div>
-				<form action="">
+				<form action="{% url 'web:registration' %}" method="post">
+                    {% csrf_token %}
 					<p class="first">
 						<label for="name">Name</label>
-						<input type="text" placeholder="Enter Your Name" />
+						<input type="text" name="name" placeholder="Enter Your Name" />
 					</p>
 					<p class="email">
 						<label for="name">E-mail</label>
-						<input type="text" placeholder="Enter Your E-mail" />
+						<input type="email" name="email" placeholder="Enter Your E-mail" />
 					</p>
 					<p class="phone">
 						<label for="name">Phone</label>
-						<input type="text" placeholder="Enter Your Phone" />
+						<input type="text" name="phone" placeholder="Enter Your Phone" />
 					</p>
 					<p>
 						<label for="name">Education</label>
-						<input type="text" placeholder="Enter Your Education" />
+						<input type="text" name="education" placeholder="Enter Your Education" />
 					</p>
 					<p>
 						<label for="name">DOB</label>
-						<input type="text" placeholder="Enter Your DOB" />
+						<input type="text" name="dob" placeholder="Enter Your DOB" />
 					</p>
 					<p class="last">
 						<label for="name">Why You Like Femme?</label>
-						<textarea name="" id="" placeholder="Enter Your Message" cols="50" rows="13"></textarea>
+						<textarea name="message" id="" placeholder="Enter Your Message" cols="50" rows="13"></textarea>
 					</p>
 					<br class="clear">
 					<input type="submit" class="submit" value="Submit" />
 				</form>
 			</section>
 		</section>
+
 		<section id="contact">
 			<section class="wrapper">
 				<div class="head">
@@ -699,13 +705,12 @@
 			</section>
 		</section>
 
-
-		
 		<footer>
 			<section class="wrapper">
 				<p>Powered By Femme. <span>&copy;</span> {% now 'Y' %} Femme. All rights reserved.</p>
 			</section><!--(#footer > .bottom)-->
 		</footer>
+
 		<script>
 			function openNav() {
 			    document.getElementById("myNav").style.height = "100%";
