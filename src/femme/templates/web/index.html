@@ -644,29 +644,30 @@
 				</div>
 				<form action="{% url 'web:registration' %}" method="post">
                     {% csrf_token %}
-					<p class="first">
-						<label for="name">Name</label>
-						<input type="text" name="name" placeholder="Enter Your Name" />
+{#		complete with django			{{ form.as_p }}#}
+                    <p class="first">
+						<label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+						{{ form.name }}
 					</p>
 					<p class="email">
-						<label for="name">E-mail</label>
-						<input type="email" name="email" placeholder="Enter Your E-mail" />
+						<label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+						{{ form.email }}
 					</p>
 					<p class="phone">
-						<label for="name">Phone</label>
-						<input type="text" name="phone" placeholder="Enter Your Phone" />
+						<label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+                        {{ form.phone }}
 					</p>
 					<p>
-						<label for="name">Education</label>
-						<input type="text" name="education" placeholder="Enter Your Education" />
+						<label for="{{ form.education.id_for_label }}">{{ form.education.label }}</label>
+						{{ form.education }}
 					</p>
 					<p>
-						<label for="name">DOB</label>
-						<input type="text" name="dob" placeholder="Enter Your DOB" />
+						<label for="{{ form.dob.id_for_label }}">{{ form.dob.label }}</label>
+						{{ form.dob }}
 					</p>
 					<p class="last">
-						<label for="name">Why You Like Femme?</label>
-						<textarea name="message" id="" placeholder="Enter Your Message" cols="50" rows="13"></textarea>
+						<label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+						{{ form.message }}
 					</p>
 					<br class="clear">
 					<input type="submit" class="submit" value="Submit" />

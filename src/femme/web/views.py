@@ -13,6 +13,8 @@
 from django.shortcuts import render
 from web.models import AboutClass, RegistrationClass
 from django.http.response import HttpResponse
+from web.forms import RegistrationForm
+from web.functions import generate_form_errors
 
 
 def index(request):
@@ -21,16 +23,19 @@ def index(request):
     # exclude() -- return -- queryset
     # get() -- return -- object
 
-    about_instances = AboutClass.objects.all()
+    _about_instances = AboutClass.objects.all()
+    _form = RegistrationForm
     context = {
         "app_title": "Home",
-        "about_instances": about_instances,
+        "about_instances": _about_instances,
+        "form": _form
     }
     return render(request, 'web/index.html', context);
 
 
 def registration(request):
     if request.method == "POST":
+        '''    HTML FORM SUBMISSION
         _name = request.POST.get('name')
         _email = request.POST.get('email')
         _phone = request.POST.get('phone')
@@ -40,6 +45,14 @@ def registration(request):
         RegistrationClass.objects.create(
             name=_name, email=_email, phone=_phone, education=_education, dob=_dob, message=_message
         )
+        '''
+        '''   DJANGO FORM SUBMISSION   '''
+        _form = RegistrationForm(request.POST)
+        if _form.is_valid():
+            _form.save()
+        else:
+            errors = generate_form_errors(_form, formset=False)
+            return HttpResponse(errors)
         return HttpResponse("form submitted")
     else:
         return HttpResponse("invalid request!")
