@@ -30,9 +30,20 @@ def index(request):
     context = {
         "app_title": "Home",
         "about_instances": _about_instances,
-        "form": _form
+        "form": _form,
+        "is_home": True,
     }
     return render(request, 'web/index.html', context);
+
+
+def about(request):
+    _about_instances = AboutClass.objects.all()
+    context = {
+        "app_title": "About",
+        "about_instances": _about_instances,
+        "is_about": True,
+    }
+    return render(request, 'web/about.html', context);
 
 
 def registration(request):
